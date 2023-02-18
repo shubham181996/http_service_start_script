@@ -1,0 +1,15 @@
+------------------------------------------------------Http_service_start_when_service_gone_shutdown-----------------------------------------------------------------------
+Write a sheel script for it.
+
+#!/bin/bash
+
+HTTPD=$(netstat -ntlp | grep httpd | wc -l)
+
+if [ $HTTPD -eq 1 ]
+then
+        echo "httpd service running"
+        exit 1
+else
+        systemctl start httpd
+        echo "Httpd service started"
+fi
